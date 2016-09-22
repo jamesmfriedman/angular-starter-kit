@@ -1,6 +1,10 @@
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
+
+/**
+ * BASE
+ */
 let config = {
 	entry: {
 		'styles': './src/styles.js',
@@ -71,8 +75,18 @@ let config = {
  * DEV
  */
 if (process.env.NODE_ENV === 'DEV') {
+	config.devtool = 'cheap-module-eval-source-map';
 	let tsLoaders = config.module.loaders[0].loaders;
 	tsLoaders.unshift('@angularclass/hmr-loader');
+}
+
+/**
+ * TEST
+ */
+if (process.env.NODE_ENV === 'TEST') {
+	config.devtool = 'inline-source-map';
+	delete config.plugins;
+	delete config.devServer;
 }
 
 /**
