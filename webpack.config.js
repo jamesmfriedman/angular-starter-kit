@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 
-module.exports = {
+let config = {
 	entry: {
 		'styles': './src/styles.js',
 		'polyfills': './src/polyfills.ts',
@@ -23,11 +23,11 @@ module.exports = {
 			{
 				test: /\.ts$/,
 				exclude: ['node_modules', 'bower_components'],
-				loaders: ['awesome-typescript-loader', '@angularclass/hmr-loader', 'angular2-template-loader']
+				loaders: ['awesome-typescript-loader', 'angular2-template-loader']
 			},
 			{
-			  test: /\.html$/,
-			  loader: 'html'
+			  	test: /\.html$/,
+			  	loader: 'html'
 			},
 			{
 				test: /\.scss$/,
@@ -44,6 +44,11 @@ module.exports = {
   	},
 
 	plugins: [
+	 	new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+            }
+        }),
 		new webpack.optimize.CommonsChunkPlugin({
 	    	name: ['app', 'vendor', 'polyfills', 'styles']
 	  	}),
@@ -61,3 +66,21 @@ module.exports = {
 		}
 	}
 };
+
+/**
+ * DEV
+ */
+if (process.env.NODE_ENV === 'DEV') {
+	let tsLoaders = config.module.loaders[0].loaders;
+	tsLoaders.unshift('@angularclass/hmr-loader');
+}
+
+/**
+ * PRODUCTION
+ */
+if (process.env.NODE_ENV === 'PRODUCTION') {
+	
+}
+
+
+module.exports = config;
