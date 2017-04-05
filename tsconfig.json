@@ -2,13 +2,21 @@
   "exclude": ["node_modules", "bower_components"],
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
+    "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "lib": ["es2015", "dom"],
     "removeComments": false,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true
+  },
+  "compileOnSave": false,
+  "angularCompilerOptions": {
+      "skipMetadataEmit" : true
+  },
+  "awesomeTypescriptLoaderOptions": {
+      "useWebpackText": true
   }
 }

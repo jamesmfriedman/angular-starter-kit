@@ -3,4 +3,6 @@ typings/
 .DS_Store
 *.sublime-project
 *.sublime-workspace
+public/index.html
+public/dist
 npm-debug.log

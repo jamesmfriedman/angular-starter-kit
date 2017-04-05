@@ -1,8 +1,7 @@
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { NgModule, ApplicationRef, enableProdMode} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { removeNgStyles, createNewHosts, bootloader, createInputTransfer } from '@angularclass/hmr';
-import { AppComponent } from './app/app.component';
+import { NgModule, ApplicationRef, enableProdMode} from '@angular/core';
+import { AppComponent } from './app.component';
+import { removeNgStyles, createNewHosts, createInputTransfer } from '@angularclass/hmr';
 
 @NgModule({
 	imports:      [ BrowserModule ],
@@ -41,14 +40,3 @@ export class AppModule {
 		// anything you need done the component is removed
 	}
 }
-
-export function main() {
-	if (process.env.NODE_ENV === 'PRODUCTION') {
-		enableProdMode();
-	}
-
-  	return platformBrowserDynamic().bootstrapModule(AppModule);
-}
-
-// boot on document ready
-bootloader(main);
