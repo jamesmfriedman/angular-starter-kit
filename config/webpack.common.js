@@ -21,7 +21,7 @@ module.exports = function(env) {
 			chunkFilename: '[id].chunk.js'
 		},
 		resolve: {
-			extensions: ['.js', '.ts']
+			extensions: ['.ts', '.js', '.html']
 		},
 		module: {
 			loaders: [
