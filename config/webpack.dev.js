@@ -10,6 +10,7 @@ module.exports = function(env) {
         },
         devtool: 'cheap-module-eval-source-map',
 		devServer: {
+			apiHistoryFallback: true,
 			contentBase: './public',
 			headers: { 
 				'Access-Control-Allow-Origin': '*'
